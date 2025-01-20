@@ -10,8 +10,7 @@ const createUser = async(req, res) => {
 
     try{
         const user = await User.create({name, email, password})
-        const token = await generateToken(user._id);
-        res.status(200).json({success: true, data: {user, token}})
+        res.status(200).json({success: true, data: user})
     }
     catch(err){
         res.status(500).json({success: false, message: err.message})
